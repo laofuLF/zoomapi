@@ -32,23 +32,23 @@ stop = False
 while not stop:
     answer1 = answer2 = ""
     while answer1 not in {"1", "2", "3"}:
-        answer1 = input("choose one of the followings: \n"
-                        "1. do something with chat messages\n"
-                        "2. do something with chat channels\n"
-                        "3. end session\n")
+        answer1 = input("Choose one of the followings: \n"
+                        "1. Do something with chat messages\n"
+                        "2. Do something with chat channels\n"
+                        "3. End session\n")
     # chat messages test
     if answer1 == "1":
         while answer2 not in {"1", "2", "3", "4", "5"}:
-            answer2 = input("what do you want to do with your chat messages?\n"
-                            "1. list all messages in the channel on a specific date\n"
-                            "2. send a chat message\n"
-                            "3. update a message\n"
-                            "4. delete a message\n"
-                            "5. end session\n")
+            answer2 = input("What do you want to do with your chat messages?\n"
+                            "1. List all messages in the channel on a specific date\n"
+                            "2. Send a chat message\n"
+                            "3. Update a message\n"
+                            "4. Delete a message\n"
+                            "5. End session\n")
 
         # list all messages on a date
         if answer2 == "1":
-            select_date = input("type in date, for example: 2020-4-6\n")
+            select_date = input("Type in date, for example: 2020-4-6\n")
             data = client.chat_messages.list(to_channel=my_channel_id, date=select_date, user_id="me")
             messages = data.json().get("messages")
             for message in messages:
@@ -97,7 +97,6 @@ while not stop:
         # end session
         elif answer2 == "5":
             answer1 = answer2 = ""
-            break
 
     # chat channels test
     elif answer1 == "2":
@@ -216,7 +215,7 @@ while not stop:
 
         # end session
         elif answer2 == "11":
-            break
+            answer1 = answer2 = ""
         answer1 = answer2 = ""
 
     elif answer1 == "3":
